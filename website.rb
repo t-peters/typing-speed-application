@@ -32,9 +32,7 @@ result = JSON.parse(response.body)
 
 
 get '/' do
-  name = "Tijesunimi"
-  values = result[0]
-  haml :index, :locals => {:name => values }
+  haml :index
 end
 
 get '/about' do

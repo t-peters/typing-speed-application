@@ -1,11 +1,30 @@
-%h1 Home Page
-%p This is the home page just get use to it
-/ %img{:src=>name['user']['profile_background_image_url']} 
-%p= name['user']['profile_background_image_url']
-%ul
-- name['user'].each do |x,y|
-  %li
-    %p
-    =x 
-    %p
-    =y
+!!!
+%html{"ng-app" => "TypingApp"}
+  %head
+    %title My Sinatra Website
+    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
+    %link(rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+  %body
+    %div.container
+      #header
+        %h1 My Sinatra Website
+        %h2 A Simple Site made with Sinatra and HAML!
+      #nav
+        %ol
+          %a(href="/")
+            %li Home
+          %a(href="about")
+            %li About
+ 
+      #content
+        %div{"ui-view":""}
+ 
+      #footer
+        %p
+          This is the footer.
+    %script(src="bower_components/jquery/dist/jquery.min.js")
+    %script(src="bower_components/angular/angular.min.js")
+    %script(src="bower_components/angular-ui-router/release/angular-ui-router.min.js")
+    %script(src="bower_components/bootstrap/dist/js/bootstrap.min.js")
+    %script(src="scripts/app.js")
+

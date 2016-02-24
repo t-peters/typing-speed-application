@@ -1,8 +1,11 @@
 {
   "name": "Typing Speed Application",
-  "description": "This is a web application that checks the user typing speed",
+  "homepage": "https://github.com/t-peters/typing-speed-application",
+  "description": "This is a web application that checks the typing speed of the user",
   "main": "",
-  "moduleType": [],
+  "moduleType": [
+    "node"
+  ],
   "keywords": [
     "typing",
     "speed"
@@ -11,16 +14,9 @@
     "Tijesunimi Peters"
   ],
   "license": "MIT",
-  "homepage": "",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "angular": "angularjs#^1.5.0"
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.18"
   }
 }
