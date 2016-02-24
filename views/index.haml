@@ -1,0 +1,11 @@
+%h1 Home Page
+%p This is the home page just get use to it
+/ %img{:src=>name['user']['profile_background_image_url']} 
+%p= name['user']['profile_background_image_url']
+%ul
+- name['user'].each do |x,y|
+  %li
+    %p
+    =x 
+    %p
+    =y

@@ -1,0 +1,26 @@
+{
+  "name": "Typing Speed Application",
+  "description": "This is a web application that checks the user typing speed",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "typing",
+    "speed"
+  ],
+  "authors": [
+    "Tijesunimi Peters"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "angularjs#^1.5.0"
+  }
+}
