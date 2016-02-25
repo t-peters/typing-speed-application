@@ -1,30 +1,56 @@
 !!!
-%html{"ng-app" => "TypingApp"}
+%html{"ng-app" => 'TypingApp'}
   %head
-    %title My Sinatra Website
+    %title Typing Speed Application
     %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
     %link(rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css")
   %body
-    %div.container
-      #header
-        %h1 My Sinatra Website
-        %h2 A Simple Site made with Sinatra and HAML!
-      #nav
-        %ol
-          %a(href="/")
-            %li Home
-          %a(href="about")
-            %li About
- 
-      #content
-        %div{"ui-view":""}
- 
+    %div(class="page-header")
+      %div(class="container")
+        %div(class="row")
+          %div(class="col-sm-12 col-md-12 col-xs-12")
+            %div(class="jumbotron")
+              %h1 Typing Speed Application
+              %p This is an application that tests your typing speed
+              %div
+                %ul(class="nav nav-pills")
+                  %li
+                    %a{"class"=>"btn","ui-sref"=>"home"} Home
+                  %li
+                    %a{"class"=>"btn","ui-sref"=>"about"} About
+                  %li
+                    %a{"class"=>"btn","ui-sref"=>"login"} Login
+                  %li
+                    %a{"class"=>"btn","ui-sref"=>"register"} Register
+    
+    %div(class="container")
+      %div(class="panel-body")
+        #content
+          %div{"ui-view"=>true}
+
+
+      
+   
+
       #footer
-        %p
-          This is the footer.
+        %div(class="panel-footer")
+          %p
+            This is the footer.
     %script(src="bower_components/jquery/dist/jquery.min.js")
     %script(src="bower_components/angular/angular.min.js")
     %script(src="bower_components/angular-ui-router/release/angular-ui-router.min.js")
     %script(src="bower_components/bootstrap/dist/js/bootstrap.min.js")
     %script(src="scripts/app.js")
+
+    -# Controllers
+    %script(src="scripts/controllers/HomeCtrl.js")
+    %script(src="scripts/controllers/AboutCtrl.js")
+    %script(src="scripts/controllers/LoginCtrl.js")
+    %script(src="scripts/controllers/RegisterCtrl.js")
+    %script(src="scripts/controllers/AppCtrl.js")
+
+    -# Services Loading
+    %script(src="scripts/services/RegistrationService.js")
+    %script(src="scripts/services/LoginService.js")
+    %script(src="scripts/services/AppService.js")
 
