@@ -1,0 +1,84 @@
+<!-- <form id="tipper">
+    <textarea id="textariffic"></textarea>
+    <p> <span class="label">CPM</span>
+ <span id="CPM">0</span>
+
+    </p>
+    <p> <span class="label">WPM</span>
+ <span id="WPM">0</span>
+
+    </p>
+</form>
+
+<script type="text/javascript">
+  $(function () {
+    $('textarea')
+        .keyup(checkSpeed);
+});
+
+var iLastTime = 0;
+var iTime = 0;
+var iTotal = 0;
+var iKeys = 0;
+
+function checkSpeed() {
+    iTime = new Date().getTime();
+
+    if (iLastTime != 0) {
+        iKeys++;
+        iTotal += iTime - iLastTime;
+        iWords = $('textarea').val().split(/\s/).length;
+        $('#CPM').html(Math.round(iKeys / iTotal * 6000, 2));
+        $('#WPM').html(Math.round(iWords / iTotal * 6000, 2));
+    }
+
+    iLastTime = iTime;
+}
+</script> -->
+
+
+<div class="wrapper" tabindex="1">
+    <span class="textbox" contentEditable="true">Lorem i</span><span class="gray"></span>
+</div>
+<script type="text/javascript">
+    var text = "Lorem ipsum dolor sit amet";
+
+$(".textbox").on("focus blur", function(){
+    $(".wrapper").toggleClass("focused");
+});
+
+$(".wrapper").click(function (e) {
+    if (e.target == this) {
+        var b = $(".textbox", this).focus();
+        setEndOfContenteditable(b[0]);
+    }
+}).trigger("click");
+
+$(".wrapper > .textbox").on("input", function(){
+    var ipt = $(this).text().replace(/\u00A0/g, " ");
+    //freakin NO-BREAK SPACE needs extra care
+    if(text.indexOf(ipt) == 0){
+        $(".gray").text(text.substr(ipt.length, text.length));
+    }else{
+        $(".gray").text("");
+    }
+}).trigger("input");
+
+
+function setEndOfContenteditable(contentEditableElement) {
+    var range, selection;
+    if (document.createRange) {
+        range = document.createRange();
+        range.selectNodeContents(contentEditableElement);
+        range.collapse(false);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+    } else if (document.selection) {
+        range = document.body.createTextRange();
+        range.moveToElementText(contentEditableElement);
+        range.collapse(false);
+        range.select();
+    }
+}
+</script>

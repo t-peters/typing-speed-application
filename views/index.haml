@@ -4,24 +4,24 @@
     %title Typing Speed Application
     %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
     %link(rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+    -# %link(rel="stylesheet" href="styles/style.css")
   %body
-    %div(class="page-header")
-      %div(class="container")
+    %div(class="container")
+      %div(class="page-header")
         %div(class="row")
-          %div(class="col-sm-12 col-md-12 col-xs-12")
-            %div(class="jumbotron")
-              %h1 Typing Speed Application
-              %p This is an application that tests your typing speed
-              %div
-                %ul(class="nav nav-pills")
-                  %li
-                    %a{"class"=>"btn","ui-sref"=>"home"} Home
-                  %li
-                    %a{"class"=>"btn","ui-sref"=>"about"} About
-                  %li
-                    %a{"class"=>"btn","ui-sref"=>"login"} Login
-                  %li
-                    %a{"class"=>"btn","ui-sref"=>"register"} Register
+          %div(class="col-sm-6")
+            %a{"class"=>"navbar-brand", "href"=>"#"} Typing Speed App
+          %div(class="col-sm-6")
+            %div(class="pull-right")
+              %ul{"class"=>"nav nav-pills"}
+                %li
+                  %a{"class"=>"btn","ui-sref"=>"home"} Home
+                %li
+                  %a{"class"=>"btn","ui-sref"=>"about"} About
+                %li
+                  %a{"class"=>"btn","ui-sref"=>"login"} Login
+                %li
+                  %a{"class"=>"btn","ui-sref"=>"register"} Register
     
     %div(class="container")
       %div(class="panel-body")
