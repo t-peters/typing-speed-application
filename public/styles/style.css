@@ -1,0 +1,28 @@
+.wrapper {
+    border: 1px solid rgb(150, 150, 150);
+    outline: 0;
+    height: 16px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: text;
+    font-family: 'Arial';
+    font-size: 12px;
+}
+.wrapper.focused{
+    border: 1px solid rgb(102, 175, 233);
+    box-shadow: 0px 0px 10px lightblue;
+}
+.gray {
+    color: gray;
+    height: 100%;
+    position: relative;
+    z-index: -1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.textbox {
+    outline: none;
+    display: inline-block;
+    height: 100%;
+    min-width: 1px;
+}
