@@ -48,3 +48,12 @@ post '/login' do
 
     {:code=>'success',:response => 'Login Successful',:user=>user[0]}.to_json if !user.empty?
 end
+
+
+post '/save/result' do 
+  return {:response => "invalid parameters"}.to_json if !request.accept? 'application/json'
+  data = JSON.parse request.body.string
+
+  data.to_json
+
+end
