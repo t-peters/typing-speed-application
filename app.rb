@@ -54,4 +54,6 @@ post '/save/result' do
   return {:response => "invalid parameters"}.to_json if !request.accept? 'application/json'
   data = JSON.parse request.body.string
 
+  data.to_json
+
 end

@@ -18,8 +18,10 @@
                   %a{"class"=>"btn","ui-sref"=>"home"} Home
                 %li
                   %a{"class"=>"btn","ui-sref"=>"about"} About
-                %li
+                %li{"ng-show"=>"!loginStatus"}
                   %a{"class"=>"btn","ui-sref"=>"login"} Login
+                %li{"ng-show"=>"loginStatus"}
+                  %a{"class"=>"btn","ui-sref"=>"logout"} Logout
                 %li
                   %a{"class"=>"btn","ui-sref"=>"register"} Register
     
@@ -48,6 +50,7 @@
     %script(src="scripts/controllers/LoginCtrl.js")
     %script(src="scripts/controllers/RegisterCtrl.js")
     %script(src="scripts/controllers/AppCtrl.js")
+    %script(src="scripts/controllers/LogoutCtrl.js")
 
     -# Services Loading
     %script(src="scripts/services/RegistrationService.js")
