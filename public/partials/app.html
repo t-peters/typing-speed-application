@@ -19,6 +19,7 @@
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
           Total Chars: {{text.length}}
+          UncorrectedErrors: {{uncorrectedError}}
         </div>
       </div>
     </div>
@@ -29,12 +30,12 @@
         <form name="AppForm" class="form-horizontal" role="form">
             <div class="form-group">
                 <div class="col-sm-12">
-                    <textarea ng-keypress="checkIfEnterKeyWasPressed($event)" ng-disabled="disabled" ng-model="input" class="form-control" rows="3"></textarea>
+                    <textarea ng-keydown="checkForBackspace($event)" ng-keypress="checkIfEnterKeyWasPressed($event)" ng-disabled="disabled" ng-model="input" class="form-control" rows="3"></textarea>
                 </div>
             </div>
             <div class="form-group">
               <div class="col-sm-6">
-                <button ng-click="reset()" ng-disabled="!disabled" class="btn btn-primary">Reset</button>
+                <button ng-click="reset()" ng-disabled="!disabled" class="btn btn-primary">Start</button>
                 <!-- <button ng-click="save()" ng-show="!disabled" class="btn btn-primary">Save</button> -->
               </div>
 
@@ -69,8 +70,16 @@
                 <td>{{grossWpm}}wpm</td>
               </tr>
               <tr>
+                <td>Net Words per Min:</td>
+                <td>{{netWpm}}wpm</td>
+              </tr>
+              <tr>
                 <td>Corrections Made: </td>
-                <td>{{correction}}</td>
+                <td>{{correctedErrors}}</td>
+              </tr>
+              <tr>
+                <td>Uncorrected Errors: </td>
+                <td>{{uncorrectedError}}</td>
               </tr>
             </tbody>
 
