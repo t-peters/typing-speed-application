@@ -38,6 +38,20 @@ post '/save/result' do
   return {:response => "invalid parameters"}.to_json if !request.accept? 'application/json'
   data = JSON.parse request.body.string
 
-  data.to_json
+  user = User.find_by(:email=>data['user'])
+  result = Result.new
+  
+  # if !user.empty?
+  #   # result.user = user
+  #   # result.results = data['result']
+  #   # result.datetime = Time.now
+  #   if result.save
+  #     {:code=>"success",:response=>"Result saved Successfully"}.to_json
+  #   else
+  #     {:code=>"error",:response=>"Result not saved"}.to_json
+  #   end
+  # else
+  #   {:code=>"error",:response=>"User not found"}.to_json
+  # end
 
 end
