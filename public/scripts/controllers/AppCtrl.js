@@ -40,7 +40,7 @@ app
         $timeout.cancel(mytimeout);
 
         $scope.$watch("counter", function(newVal, oldval) {
-            if (newVal === 0) {
+            if (newVal === 0 || $scope.keysCount === $scope.text.length) {
                 $scope.stop();
                 $scope.showResult = true;
                 $scope.disabled = true;
@@ -69,30 +69,30 @@ app
 
         var paragraphLength = $scope.text.length;
 
+        var checkInputLength = function() {
+            if ($scope.input.length === 0) {
+                $scope.keysCount = keysPressed = 0;
+            }
+        }
+
         $scope.checkIfEnterKeyWasPressed = function($event) {
             $scope.keysCount = keysPressed += 1;
             var keyCode = $event.which || $event.keyCode;
 
-            if ($scope.input.length == 0) {
-                $scope.keysCount = keysPressed = 0;
-            }
-            if (keyIndex == -1) {
+            
+            if (keyIndex === -1) {
                 keyIndex = 0;
             }
-            if (keysPressed == $scope.text.length) {
-                $scope.stop();
-                $scope.showResult = true;
-                $scope.disabled = true;
-                calcAccuracy();
-                calcWPM();
+            // if () {
+            //     $scope.stop();
+            //     $scope.showResult = true;
+            //     $scope.disabled = true;
+            //     calcAccuracy();
+            //     calcWPM();
 
-            }
+            // }
 
-
-
-
-
-            if ($window.String.fromCharCode(keyCode) == $scope.text[keyIndex]) {
+            if ($window.String.fromCharCode(keyCode) === $scope.text[keyIndex]) {
 
                 correctletters++;
 
@@ -103,7 +103,7 @@ app
             }
 
 
-            if ($event.keyCode != 8) {
+            if ($event.keyCode !== 8) {
                 keyIndex++;
             }
 
@@ -111,7 +111,7 @@ app
         };
 
         $scope.checkForBackspace = function($event) {
-            if ($event.keyCode == 8) {
+            if ($event.keyCode === 8) {
 
                 $scope.correctedErrors++;
                 $scope.uncorrectedError--;
