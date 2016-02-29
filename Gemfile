@@ -10,6 +10,7 @@ gem "sinatra-activerecord"
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 gem 'sinatra-reloader'
+gem "codeclimate-test-reporter", group: :test, require: nil
 
 group :development do
  gem 'sqlite3'
