@@ -1,0 +1,9 @@
+ruby:
+  enabled: true
+
+
+haml:
+  enabled: true
+
+javascript:
+  enabled: true
