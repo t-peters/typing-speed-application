@@ -7,7 +7,7 @@ app
         $scope.accuracy = 0;
         $scope.uncorrectedError = 0;
 
-        $scope.disabled = false;
+        $scope.disabled = true;
         $scope.showResult = false;
 
         $scope.remark = "Unknown";
@@ -20,6 +20,7 @@ app
         var keyIndex = $scope.input.length;
         var correctletters = 0;
         $scope.correctedErrors = 0;
+
 
         $scope.text = "It grew stronger as it moved northwest. It then made landfall on the western end of Cuba. The storm made a loop over open water, and then began moving towards the United States.";
 
@@ -35,6 +36,8 @@ app
             $timeout.cancel(mytimeout);
             $scope.save();
         }
+
+        $timeout.cancel(mytimeout);
 
         $scope.$watch("counter", function(newVal, oldval) {
             if (newVal === 0) {
@@ -69,9 +72,6 @@ app
         $scope.checkIfEnterKeyWasPressed = function($event) {
             $scope.keysCount = keysPressed += 1;
             var keyCode = $event.which || $event.keyCode;
-
-            // console.log($window.String.fromCharCode(keyCode) == $scope.text[keyIndex]);
-
 
             if ($scope.input.length == 0) {
                 $scope.keysCount = keysPressed = 0;
@@ -147,8 +147,8 @@ app
                 accuracy: Math.floor((correctletters / $scope.text.length) * 100)
             }
             var user = $window.sessionStorage.getItem('auth');
-            var data = { user: user.email, result: result };
-            // console.log(data);
+            var data = { user: user, result: result };
+            console.log(data);
             AppService.submit(data).then(function(res) {
                 console.log(res.data);
             })
