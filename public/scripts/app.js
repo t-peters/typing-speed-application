@@ -41,12 +41,25 @@ var app = angular.module('TypingApp', [
 
     })
 
-.run(['$window', '$state', '$rootScope', function($window, $state, $rootScope) {
-        if (!$rootScope.loginStatus) {
+.run(['$window', '$state', '$rootScope','$location', function($window, $state, $rootScope,$location) {
+        
+    $rootScope.$on("$locationChangeStart", function(n,a) {
+        if(!$rootScope.loginStatus) {
             $state.go('login');
-        } else {
-            $state.go('app');
-        }
-    // })
+            
+        } 
+    })
+
+    $rootScope.$on("$locationChangeSuccess", function(n,a) {
+        if(!$rootScope.loginStatus && $location.url() != '/login') {
+            $state.go('login');
+            
+        } 
+    })
+
+
+
+
+
 
 }])
