@@ -1,2 +1,6 @@
 language: ruby
 sudo: required
+
+addons:
+    code_climate:
+        repo_token: 7893a5f33454c6de29bf9e36d36e9cda48a48e0969ae1508d3740a354b63797a
