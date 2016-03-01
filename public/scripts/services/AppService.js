@@ -1,8 +1,8 @@
 app
 .service('AppService', ['$http','$q', function($http,$q){
-  var methods = {};
+  var appMethods = {};
 
-  methods.submit = function(data) {
+  appMethods.submit = function(data) {
     var d = $q.defer();
 
     $http.post('/save/result',data).then(function(res) {
@@ -16,7 +16,7 @@ app
 
 
 
-  return methods;
+  return appMethods;
   
 }])
 
