@@ -51,7 +51,7 @@ var app = angular.module('TypingApp', [
     })
 
     $rootScope.$on("$locationChangeSuccess", function(n,a) {
-        if(!$rootScope.loginStatus && $location.url() != '/login') {
+        if(!$rootScope.loginStatus && $location.url() !== '/login') {
             $state.go('login');
             
         } 
