@@ -1,8 +1,8 @@
 app
 .service('RegistrationService', ['$http','$q', function($http,$q){
-  var methods = {};
+  var regMethods = {};
 
-  methods.new_user = function(data) {
+  regMethods.new_user = function(data) {
     var def = $q.defer();
 
     $http.post('/registration',data).then(function(res) {
@@ -14,7 +14,7 @@ app
     return def.promise;
   }
 
-  return methods;
+  return regMethods;
 
   
 }])
