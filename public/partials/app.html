@@ -61,6 +61,21 @@
             </thead>
             <tbody>
               <tr>
+                <td>Start Time</td>
+              
+                <td>{{startTime.toLocaleTimeString()}}</td>
+              </tr>
+              <tr>
+                <td>End Time</td>
+              
+                <td>{{endTime.toLocaleTimeString()}}</td>
+              </tr>
+              <tr>
+                <td>Time Taken</td>
+              
+                <td>{{minuteDifference | number: 2}}</td>
+              </tr>
+              <tr>
                 <td>Accuracy</td>
               
                 <td>{{accuracy}}%</td>

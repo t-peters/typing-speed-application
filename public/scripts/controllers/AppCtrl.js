@@ -2,10 +2,12 @@ app
     .controller('AppCtrl', ['$scope', 'AppService', "$window", '$timeout', function($scope, AppService, $window, $timeout) {
 
         $scope.name = "Name";
-        $scope.counter = 60;
+        $scope.counter = 0;
         $scope.grossWpm = 0;
         $scope.accuracy = 0;
         $scope.uncorrectedError = 0;
+        $scope.startTime = null;
+        $scope.endTime = null;
 
         $scope.disabled = true;
         $scope.showResult = false;
@@ -26,7 +28,7 @@ app
 
 
         $scope.onTimeout = function() {
-            $scope.counter--;
+            $scope.counter++;
             mytimeout = $timeout($scope.onTimeout, 1000);
         }
         var mytimeout = $timeout($scope.onTimeout, 1000);
@@ -39,8 +41,8 @@ app
 
         $timeout.cancel(mytimeout);
 
-        $scope.$watch("counter", function(newVal, oldval) {
-            if (newVal === 0 || $scope.keysCount === $scope.text.length) {
+        $scope.$watch("keysCount", function(newVal, oldval) {
+            if (newVal === $scope.text.length) {
                 $scope.stop();
                 $scope.showResult = true;
                 $scope.disabled = true;
@@ -50,12 +52,12 @@ app
         })
 
         $scope.reset = function() {
-
+            $scope.startTime = new Date();
             $scope.keysCount = 0;
             $scope.errorsLeft = 0;
             correctionMade = false;
             $scope.correction = 0;
-            $scope.counter = 60;
+            $scope.counter = 0;
             $scope.disabled = false;
             $scope.showResult = false;
             $scope.onTimeout();
@@ -64,6 +66,7 @@ app
             correctletters = 0;
             paragraphLength = $scope.text.length;
             keyIndex = $scope.input.length;
+            $scope.uncorrectedError = 0;
 
         }
 
@@ -76,21 +79,19 @@ app
         }
 
         $scope.checkIfEnterKeyWasPressed = function($event) {
-            $scope.keysCount = keysPressed += 1;
+
+            
             var keyCode = $event.which || $event.keyCode;
+            if(keyCode !== 8) {
+                $scope.keysCount = keysPressed += 1;
+            }
+            
 
             
             if (keyIndex === -1) {
                 keyIndex = 0;
             }
-            // if () {
-            //     $scope.stop();
-            //     $scope.showResult = true;
-            //     $scope.disabled = true;
-            //     calcAccuracy();
-            //     calcWPM();
 
-            // }
 
             if ($window.String.fromCharCode(keyCode) === $scope.text[keyIndex]) {
 
@@ -127,8 +128,13 @@ app
         }
 
         var calcWPM = function() {
-            var grossResult = $scope.grossWpm = Math.floor(((keysPressed - $scope.correction) / 5) / 1);
-            $scope.netWpm = Math.floor((((keysPressed - $scope.correctedErrors) / 5) - $scope.uncorrectedError) / 1);
+
+            $scope.endTime = new Date();
+
+            $scope.minuteDifference = (($scope.endTime - $scope.startTime)/60000);
+            console.log('s: ',$scope.startTime.toLocaleTimeString(),"  \n e: ",$scope.endTime.toLocaleTimeString()," \n diff: ",$scope.minuteDifference);
+            var grossResult = $scope.grossWpm = Math.floor(((keysPressed - $scope.correction) / 5) / $scope.minuteDifference);
+            $scope.netWpm = Math.floor((((keysPressed - $scope.correctedErrors) / 5) - $scope.uncorrectedError) / $scope.minuteDifference);
 
             if (grossResult < 35) {
                 $scope.remark = "Novice";
